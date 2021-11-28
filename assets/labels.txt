@@ -1,0 +1,5 @@
+0 Tiger
+1 Bear
+2 Rhino
+3 Elephant
+4 Wolf
