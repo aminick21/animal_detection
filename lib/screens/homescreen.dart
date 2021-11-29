@@ -18,6 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
   CameraImage? cameraImage;
   CameraController? cameraController;
   String output="";
+  String time="";
 
   File? image;
   @override
@@ -68,7 +69,10 @@ class _HomeScreenState extends State<HomeScreen> {
       if(predictions[0]['confidence']>.8){
         setState(() {
           output=split(predictions[0]['label']);
+          DateTime now = DateTime.now();
+          time=now.hour.toString() + ":" + now.minute.toString() + ":" + now.second.toString();
         });
+
       }
       else{ setState(() {
         output="Cannot recognise";
@@ -121,7 +125,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 child:const Text("From Camera")),
 
             Text(output,
-            style: const TextStyle(fontWeight: FontWeight.w600,fontSize:18,),)
+            style: const TextStyle(fontWeight: FontWeight.w600,fontSize:18,),),
+            Text(time,
+              style: const TextStyle(fontWeight: FontWeight.w600,fontSize:18,),)
           ],
         ),
       ),
