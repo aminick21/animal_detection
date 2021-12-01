@@ -3,6 +3,8 @@
 import 'dart:io';
 
 import 'package:animal_detection/main.dart';
+import 'package:animal_detection/screens/secondscreen.dart';
+import 'package:animal_detection/screens/tryagain.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -200,38 +202,41 @@ class _HomeScreenState extends State<HomeScreen> {
                             )),
                       ],
                     ),
-                    // Text(
-                    //   output,
-                    //   style: const TextStyle(
-                    //     fontWeight: FontWeight.w600,
-                    //     fontSize: 18,
-                    //   ),
-                    // ),
-                    // Text(
-                    //   time,
-                    //   style: const TextStyle(
-                    //     fontWeight: FontWeight.w600,
-                    //     fontSize: 18,
-                    //   ),
-                    // ),
                     Spacer(),
                     Align(
                       alignment: Alignment.centerRight,
-                      child: Container(
-                        child: Center(
-                            child: Text(
-                          "Check",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 24,
-                          ),
-                        )),
-                        height: 80,
-                        width: 130,
-                        decoration: BoxDecoration(
-                            color: Theme.of(context).scaffoldBackgroundColor,
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(40))),
+                      child: GestureDetector(
+                        onTap: (){
+                          print(output);
+                          if(output!="Cannot recognise") {
+                            runModel();
+                            Navigator.push(context, MaterialPageRoute(builder: (context) =>
+                                SecondScreen(
+                                  image: image!,
+                                  result: output,)));
+                          }
+                          else{
+                            Navigator.push(context, MaterialPageRoute(builder: (context) =>
+                                TryAgain()));
+
+                          }
+                          },
+                        child: Container(
+                          child: Center(
+                              child: Text(
+                            "Check",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 24,
+                            ),
+                          )),
+                          height: 80,
+                          width: 130,
+                          decoration: BoxDecoration(
+                              color: Theme.of(context).scaffoldBackgroundColor,
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(40))),
+                        ),
                       ),
                     ),
                   ],

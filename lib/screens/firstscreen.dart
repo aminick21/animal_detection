@@ -45,7 +45,7 @@ class _FirstScreenState extends State<FirstScreen>
               ),
             ),
             Text(
-              "Who's chirping?",
+              "Who's there?",
               style: TextStyle(
                 fontSize: 40,
                 fontFamily: "LibreCaslonDisplay",
@@ -66,12 +66,12 @@ class _FirstScreenState extends State<FirstScreen>
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(
-                          Icons.mic,
+                          Icons.arrow_forward_ios_outlined,
                           color: Theme.of(context).scaffoldBackgroundColor,
                         ),
                         SizedBox(width:10,),
                         Text(
-                          "LET US HEAR IT",
+                          "LET'S   GO",
                           style: TextStyle(
                               fontSize: 17,
                               color: Colors.white),
